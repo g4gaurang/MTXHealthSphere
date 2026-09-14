@@ -232,7 +232,7 @@ function App() {
         </div><HeroVisual />
       </div></section>
 
-      <section className="foundation" id="product" aria-label="Product foundation"><div className="foundation-intro"><span className="micro">Information Exchange &amp; Engagement Platform</span><p>A connected digital foundation for healthcare information exchange, population-health operations, and patient engagement.</p></div>
+      <section className="foundation" id="product" aria-label="Product foundation"><div className="foundation-intro"><span className="micro">Information Exchange &amp; Engagement Platform</span><p>Clinical and engagement data integration for connected patient and population-health operations. HealthSphere connects with health information exchanges and existing clinical systems.</p></div>
         {[[Network,'Connected healthcare information'],[HeartHandshake,'Coordinated care-team workflows'],[MessageSquareText,'Governed patient engagement'],[Layers3,'Reusable integration patterns']].map(([Icon,label]) => { const I = Icon as typeof Network; return <div className="foundation-item" key={label as string}><I/><span>{label as string}</span></div> })}
       </section>
 
