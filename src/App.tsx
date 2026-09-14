@@ -63,7 +63,7 @@ const capabilities: Detail[] = [
 
 const interfaces = [
   ['Regional HIE feed', 'Event feed', '21:42', '1,248', '1,241', '7', 'Review required', 'Pending', 'Integration operations'],
-  ['Hospital ADT feed', 'Near-real-time event feed', '21:39', '864', '862', '2', 'Retry scheduled', 'Reconciled', 'Interface support'],
+  ['Hospital ADT feed', 'Configured low-latency event feed', '21:39', '864', '862', '2', 'Retry scheduled', 'Reconciled', 'Interface support'],
   ['Historical clinical-data migration', 'Secure batch files', '18:10', '18 files', '17', '1', 'Awaiting source', 'Pending', 'Migration team'],
   ['Risk-file intake', 'Scheduled secure file', '20:05', '4 files', '4', '0', 'Operating', 'Reconciled', 'Population data'],
   ['Provider-directory synchronization', 'API batch', '19:30', '2,106', '2,106', '0', 'Operating', 'Reconciled', 'Data stewardship'],
@@ -158,7 +158,7 @@ function HeroVisual() {
   const [side, setSide] = useState<'exchange' | 'engagement'>('exchange')
   const exchange = [
     ['Source connection', 'Regional HIE feed', 'Operating'], ['Clinical event', 'Discharge event received', 'Processed'],
-    ['Patient match', 'Candidate reviewed', 'Matched'], ['Transformation', 'ADT mapping v4.2', 'Complete'],
+    ['Patient match', 'Candidate reviewed', 'Matched after authorized review'], ['Transformation', 'ADT mapping v4.2', 'Complete'],
     ['Data quality', '2 fields routed', 'Review required'], ['Delivery', 'Care workspace', 'Acknowledged'],
   ]
   const engagement = [
@@ -201,14 +201,14 @@ function App() {
   const [phase, setPhase] = useState(0)
   const nav = [['Product','product'],['Challenges','challenges'],['Information Journey','information-journey'],['Experiences','experiences'],['Capabilities','capabilities'],['Engagement','engagement'],['Analytics','analytics'],['Architecture','architecture'],['Adoption','adoption']]
   const patientEvents = [
-    ['Admission event', 'Hospital ADT feed', 'Today · 08:42', 'Transformed', 'Matched after configured review'],
-    ['Discharge event', 'Regional HIE feed', 'Today · 15:18', 'Transformed', 'Matched'],
+    ['Admission event', 'Hospital ADT feed', 'Today · 08:42', 'Transformed', 'Matched after authorized review'],
+    ['Discharge event', 'Regional HIE feed', 'Today · 15:18', 'Transformed', 'Matched after authorized review'],
     ['Program enrollment', 'Care-management platform', 'Previous cycle', 'Validated', 'Associated'],
     ['Approved communication', 'Engagement platform', 'Today · 16:05', 'Recorded', 'Subscriber linked'],
   ]
   const transitionSteps = [
     ['Admission event received','Hospital event feed','Configured ADT event rule','Integration operations'],
-    ['Patient matched','Identity service','Configured threshold plus review','Data steward'],
+    ['Patient matched after authorized review','Identity service','Configured threshold plus review','Data steward'],
     ['Program eligibility checked','Program configuration','Approved eligibility criteria','Population-health team'],
     ['Care coordinator notified','HealthSphere workflow','Role and assignment rule','Clinical supervisor'],
     ['Follow-up task created','Care workspace','Transition task template','Care coordinator'],
@@ -232,7 +232,7 @@ function App() {
         </div><HeroVisual />
       </div></section>
 
-      <section className="foundation" id="product" aria-label="Product foundation"><div className="foundation-intro"><span className="micro">Information Exchange &amp; Engagement Platform</span><p>Clinical and engagement data integration for connected patient and population-health operations. HealthSphere connects with health information exchanges and existing clinical systems.</p></div>
+      <section className="foundation" id="product" aria-label="Product foundation"><div className="foundation-intro"><span className="micro">Information Exchange &amp; Engagement Platform</span><p>Clinical and engagement data integration for connected patient and population-health operations. HealthSphere connects with health information exchanges and existing clinical systems; it does not operate as a government-designated HIE.</p></div>
         {[[Network,'Connected healthcare information'],[HeartHandshake,'Coordinated care-team workflows'],[MessageSquareText,'Governed patient engagement'],[Layers3,'Reusable integration patterns']].map(([Icon,label]) => { const I = Icon as typeof Network; return <div className="foundation-item" key={label as string}><I/><span>{label as string}</span></div> })}
       </section>
 
@@ -273,7 +273,7 @@ function App() {
       </section>
 
       <section className="section" id="monitoring">
-        <SectionHead eyebrow="Interface monitoring" title="See processing, exceptions, retries, and reconciliation in one workspace." copy="Fictional connections and synthetic operating data illustrate support workflows." />
+        <SectionHead eyebrow="Interface monitoring" title="See processing, exceptions, retries, and reconciliation in one workspace." copy="Fictional connections and synthetic operating data illustrate support workflows. Processing timing depends on the source and deployed configuration." />
         <div className="monitor-layout"><div className="connection-list" role="tablist">{interfaces.map((row,i)=><button key={row[0]} onClick={()=>setConnection(i)} className={connection===i?'active':''}><span className={`health ${row[6]==='Operating'?'ok':'attention'}`} /><span><b>{row[0]}</b><small>{row[1]} · Last processing {row[2]}</small></span><ChevronDown/></button>)}</div>
           <div className="monitor-card"><div className="monitor-head"><div><span className="micro">Connection detail</span><h3>{interfaces[connection][0]}</h3></div><Badge tone={interfaces[connection][6]==='Operating'?'good':'warn'}>{interfaces[connection][6]}</Badge></div><div className="metric-grid"><div><span>Received</span><b>{interfaces[connection][3]}</b></div><div><span>Completed</span><b>{interfaces[connection][4]}</b></div><div><span>Exceptions</span><b>{interfaces[connection][5]}</b></div><div><span>Reconciliation</span><b>{interfaces[connection][7]}</b></div></div><div className="owner-row"><Settings2/><span>Support owner</span><b>{interfaces[connection][8]}</b></div><button className="button tertiary"><RefreshCw size={17}/> Review retry controls</button></div>
         </div>
@@ -302,7 +302,7 @@ function App() {
       <section className="section ai-section" id="responsible-ai">
         <SectionHead eyebrow="Responsible AI" title="AI assistance grounded in approved healthcare information." copy="Potential assistance is bounded by configured access, validation, human review, and permitted action." />
         <div className="ai-process">{['Approved healthcare information','AI-assisted preparation','Configured validation','Authorized staff review','Permitted action','Recorded history'].map((x,i)=><div key={x}><span>{i+1}</span><b>{x}</b>{i<5&&<ArrowRight/>}</div>)}</div>
-        <div className="ai-grid"><div><Sparkles/><h3>Potential assistance</h3><p>Summarize permitted event history · Prepare a transition chronology · Classify integration exceptions · Identify inconsistent data · Draft from approved outreach templates · Suggest an operational next step · Support audience analysis · Forecast operating volume</p></div><div><ShieldCheck/><h3>Configured controls</h3><p>Minimum necessary data · Role-based access · Source traceability · Approved prompts and templates · Human review · Model versioning · Override capture · Output monitoring · Data boundaries · Environment separation</p></div></div>
+        <div className="ai-grid"><div><Sparkles/><h3>Potential assistance</h3><p>Summarize permitted event history · Prepare a transition chronology · Classify integration exceptions · Identify inconsistent data · Draft from approved outreach templates · Suggest a non-clinical integration-operations next step · Support audience analysis · Forecast operating volume</p></div><div><ShieldCheck/><h3>Configured controls</h3><p>Minimum necessary data · Role-based access · Source traceability · Approved prompts and templates · Human review · Model versioning · Override capture · Output monitoring · Data boundaries · Environment separation</p></div></div>
         <p className="callout">AI assistance does not diagnose conditions, recommend treatment, determine clinical risk independently, or contact a patient without configured authorization.</p>
       </section>
 

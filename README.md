@@ -13,7 +13,7 @@ Run `npm run build` for a production build and `npm run preview` to inspect it l
 
 ## Product and content assumptions
 
-* HealthSphere is positioned as an information exchange and engagement platform.
+* HealthSphere is positioned as an information exchange and engagement platform. It connects with authorized HIEs and other approved sources; it does not operate as a government-designated HIE.
 * Salesforce Health Cloud, Salesforce Marketing Cloud, MuleSoft, approved secure file transfer, and configurable healthcare integration components are the current implementation foundation.
 * EHRs, HIEs, master patient index services, claims platforms, and other designated clinical systems remain external authoritative sources where applicable.
 * Interface behavior and standards support depend on source capabilities and deployed configuration.
