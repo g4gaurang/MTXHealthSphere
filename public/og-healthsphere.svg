@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071b2f"/><stop offset="1" stop-color="#0b3851"/></linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <g fill="none" stroke="#62d6c5" stroke-width="3" opacity=".72">
+    <path d="M150 180H350L470 315H700L835 205H1040"/>
+    <path d="M150 315H400L520 450H760L870 340H1040"/>
+  </g>
+  <g fill="#62d6c5"><circle cx="150" cy="180" r="10"/><circle cx="150" cy="315" r="10"/><circle cx="470" cy="315" r="10"/><circle cx="520" cy="450" r="10"/><circle cx="835" cy="205" r="10"/><circle cx="870" cy="340" r="10"/></g>
+  <text x="150" y="115" fill="#fff" font-family="Arial, sans-serif" font-size="34" font-weight="700">MTX HEALTHSPHERE</text>
+  <text x="150" y="520" fill="#fff" font-family="Arial, sans-serif" font-size="48" font-weight="600">Approved information. Coordinated action.</text>
+  <text x="150" y="565" fill="#b9d2df" font-family="Arial, sans-serif" font-size="24">Information Exchange &amp; Engagement Platform</text>
+</svg>
